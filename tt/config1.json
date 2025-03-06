@@ -1,0 +1,12 @@
+{
+    "columns": {
+        "Month": "Month",
+        "Billed Charge": "MTDcharges",
+        "Payment": "MTDpayments",
+        "Contractual Adjustment": "EngageAdjustments",
+        "Practitioner Name": "DBPracticeName"
+    },
+    "staging_folder": "C:/Users/Dell/Desktop/tt/Staging",
+    "output_subfolder": "ecw",
+    "output_filename": "Kidfinity_37.08(2).xlsx"
+}
