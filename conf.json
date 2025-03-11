@@ -1,0 +1,55 @@
+{
+    "systems": {
+        "intergy": {
+            "columns": {
+                "Date Post": "Date Post",
+                "Payments": "MTDpayments",
+                "Amount Charge": "MTDcharges",
+                "Amount Adjust": "EngageAdjustments",
+                "Practitioner Name": "DBPracticeName"
+            },
+            "staging_folder": "C:/Users/Dell/Desktop/y/Staging/intergy",
+            "output_filename": "merged_output11.xlsx",
+            "date_format": "%B_%Y",
+            "aggregate_functions": {
+                "MTDpayments": "sum",
+                "MTDcharges": "sum",
+                "EngageAdjustments": "sum"
+            },
+            "add_columns": {
+                "Practitioner Name": "folder_name",
+                "Source System": "parent_folder_before_last"
+            }
+        },
+        "modmed":{
+            "columns": {
+                "Transaction Date":"Month",
+                "Charges":"MTDcharges",
+                "Payments":"MTDpayments",
+                "Adjustments":"EngageAdjustments",
+                "Practitioner Name": "DBPracticeName"
+            },
+            "staging_folder": "C:/Users/Dell/Desktop/y/Staging/modmed",
+            "output_filename": "modmed_summary.xlsx",
+            "date_format": "%B_%Y",
+            "add_columns": {
+                "Practitioner Name": "folder_name"
+            }
+        },
+        "ecw": {
+            "columns": {
+                "Month": "Month",
+                "Billed Charge": "MTDcharges",
+                "Payment": "MTDpayments",
+                "Contractual Adjustment": "EngageAdjustments",
+                "Practitioner Name": "DBPracticeName"
+            },
+            "staging_folder": "C:/Users/Dell/Desktop/y/Staging/ecw",
+            "output_filename": "Kidfinity_37.08(11).xlsx",
+            "add_columns": {
+                "Practitioner Name": "folder_name"
+            }
+        }
+    },
+    "root_directory": "C:/Users/Dell/Desktop/y/SourceSystem"
+}
