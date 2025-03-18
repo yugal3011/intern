@@ -1,0 +1,72 @@
+{
+    "systems": {
+        "intergy": {
+            "columns": {
+                "Date Post": "Date Post",
+                "Payments": "MTDpayments",
+                "Amount Charge": "MTDcharges",
+                "Amount Adjust": "EngageAdjustments",
+                "Practitioner Name": "DBPracticeName"
+            },
+            "staging_folder": "C:/Users/Dell/Desktop/rec_testing/Staging/intergy",
+            "output_filename": "Fin Summary_Jan2025_Feb2025_intergy_summary.xlsx",
+            "date_format": "%B_%Y",
+            "aggregate_functions": {
+                "MTDpayments": "sum",
+                "MTDcharges": "sum",
+                "EngageAdjustments": "sum"
+            },
+            "add_columns": {
+                "Practitioner Name": "folder_name",
+                "Source System": "parent_folder_before_last"
+            }
+        },
+        "modmed":{
+            "columns": {
+                "Transaction Date":"Month",
+                "Charges":"MTDcharges",
+                "Payments":"MTDpayments",
+                "Adjustments":"EngageAdjustments",
+                "Practitioner Name": "DBPracticeName"
+            },
+            "staging_folder": "C:/Users/Dell/Desktop/rec_testing/Staging/modmed",
+            "output_filename": "Production Summary_27Feb2025_modmed_summary.xlsx",
+            "date_format": "%B_%Y",
+            "add_columns": {
+                "Practitioner Name": "folder_name"
+            }
+        },
+        "ecw": {
+            "columns": {
+                "Month": "Month",
+                "Billed Charge": "MTDcharges",
+                "Payment": "MTDpayments",
+                "Contractual Adjustment": "EngageAdjustments",
+                "Practitioner Name": "DBPracticeName"
+            },
+            "staging_folder": "C:/Users/Dell/Desktop/rec_testing/Staging/ecw",
+            "output_filename": "Kidfinity_37.08 - Financial Analysis at CPT Level (With Everything)summary.xlsx",
+            "add_columns": {
+                "Practitioner Name": "folder_name"
+            }
+        },        
+        "nextgen": {
+            "columns": {
+                "Ledger Date by Month": "Month",
+                "Charge": "Charge",
+                "Total Payment": "Total Payment",
+                "Adjustment": "Adjustment"
+            },
+            "staging_folder": "C:/Users/Dell/Desktop/rec_testing/Staging/nextgen",
+            "output_filename": "Fin Summary_Jan2025_Feb2025_nextgen_summary.xlsx",
+            "date_format": "%B_%Y",
+            "add_columns": {
+                "Practitioner Name": "folder_name"
+            },
+            "filter_conditions": {
+                "Ledger Date By Month": "not_empty"  
+            }
+        }
+    },
+    "root_directory": "C:/Users/Dell/Desktop/rec_testing/SourceSystem"
+}
