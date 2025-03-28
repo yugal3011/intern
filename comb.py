@@ -50,6 +50,7 @@ def process_system_data(system_name, config, all_standardized_data):
                             df["Date Post"] = pd.to_datetime(df["Date Post"], errors='coerce').dt.strftime(system_config["date_format"])
                         elif "Month" in df.columns and "date_format" in system_config:
                             df["Month"] = pd.to_datetime(df["Month"], errors='coerce').dt.strftime(system_config["date_format"])
+                        
 
                         # Add extra columns
                         for new_col, value in system_config.get("add_columns", {}).items():
@@ -135,7 +136,7 @@ def main():
         standardized_file = process_system_data(system_name, config, all_standardized_data)
         
         if standardized_file:
-            reconciled_df = process_excel_files(standardized_file, "c1.xlsx",config)
+            reconciled_df = process_excel_files(standardized_file, "c2.xlsx",config)
             if reconciled_df is not None:
                 all_reconciled_data.append(reconciled_df)
     
