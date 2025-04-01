@@ -49,8 +49,9 @@ def process_system_data(system_name, config, all_standardized_data):
                         if "Date Post" in df.columns and "date_format" in system_config:
                             df["Date Post"] = pd.to_datetime(df["Date Post"], errors='coerce').dt.strftime(system_config["date_format"])
                         elif "Month" in df.columns and "date_format" in system_config:
-                            df["Month"] = pd.to_datetime(df["Month"], errors='coerce').dt.strftime(system_config["date_format"])
-                        
+                            df["Month"] = pd.to_datetime(df["Month"].astype(str).str.replace("_", "-"), errors="coerce").dt.strftime(system_config["date_format"])
+                        """added astype(str).str.replace("_","-") 
+                        for date formatting of different formats in the form of strings and non string data type"""
 
                         # Add extra columns
                         for new_col, value in system_config.get("add_columns", {}).items():
@@ -96,7 +97,7 @@ def process_excel_files(summary_df, file_c,config):
         return None
     
     df_s['Concat_Key'] = df_s['Practitioner Name'].astype(str) + '_' + df_s[date_column].astype(str)
-    merged_df = df_s.merge(df_c, left_on='Concat_Key', right_on='Matchkey', how='inner')
+    merged_df = df_s.merge(df_c, left_on='Concat_Key', right_on='Matchkey', how='left')#changed inner to left
     
     merged_df['EngageDiffCharges'] = (merged_df['MTDcharges'] - merged_df['Engage_Charges']).round(10)
     merged_df['EngageDiffPayments'] = (merged_df['MTDpayments'] - merged_df['Engage_Payments']).round(10)
@@ -150,7 +151,7 @@ def main():
     # Save all reconciled data into a single file
     if all_reconciled_data:
         final_combined_df = pd.concat(all_reconciled_data, ignore_index=True)
-        combined_output_path = "final_combined_reconciliation1.xlsx"
+        combined_output_path = "final_combined_reconciliation2.xlsx"
         final_combined_df.to_excel(combined_output_path, index=False, engine="openpyxl")
         print(f"All reconciled outputs saved in: {combined_output_path}")
 
