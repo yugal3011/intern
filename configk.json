@@ -1,0 +1,26 @@
+{
+    "systems": {
+        "kareo": {
+            "columns": {
+                "PostingDate": "Date Post",
+                "Charges": "MTDcharges",
+                "Amount":"MTDAdjustments",
+                "Amount1":"MTDpayments",
+                "PracticeName": "Practice Name"
+            },
+            "staging_folder": "C:/Users/Dell/Desktop/reconcile_tool_code/Staging/kareo",
+            "output_filename": "k6.xlsx",
+            "date_format": "%Y-%m",
+            "aggregate_functions": {
+                "MTDpayments": "sum",
+                "MTDcharges": "sum",
+                "MTDAdjustments": "sum"
+                }   
+                }
+            },
+    "root_directory": "C:/Users/Dell/Desktop/reconcile_tool_code/SourceSystem",
+    "mapping_filename": "C:/Users/Dell/Desktop/reconcile_tool_code/Mapping.xlsx",
+    "unislink_format": "C:/Users/Dell/Desktop/reconcile_tool_code/UnislinkFormat/UnislinkFormat.xlsx",
+    "combined_output_path": "C:/Users/Dell/Desktop/reconcile_tool_code/output/final_combined_reconciliation.xlsx",
+    "percentage_threshold": 25
+    }
